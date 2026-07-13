@@ -58,7 +58,6 @@ class NotifyPayload(BaseModel):
     label: int | None = None
     timestamp: str | None = None
 
-
 @app.post("/notify")
 async def notify_location(payload: NotifyPayload):
     return {
