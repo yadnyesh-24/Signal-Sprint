@@ -1,0 +1,11 @@
+torch==2.11.0
+torchvision==0.26.0
+opencv-python==4.13.0.92
+ultralytics==8.4.35
+Pillow==12.2.0
+numpy==2.4.4
+scikit-learn==1.8.0
+fastapi>=0.100.0
+uvicorn>=0.23.0
+python-multipart>=0.0.6
+xgboost
