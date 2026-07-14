@@ -9,6 +9,7 @@ ENV PYTHONUNBUFFERED=1 \
 # Since we use opencv-python-headless, OpenGL is not needed at all.
 # Only libglib2.0-0 and libgomp1 (for torch/ultralytics) are required.
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    libgl1 \
     libglib2.0-0 \
     libgomp1 \
     && rm -rf /var/lib/apt/lists/*
