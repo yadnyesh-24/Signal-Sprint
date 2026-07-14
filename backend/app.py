@@ -10,14 +10,18 @@ from pydantic import BaseModel
 from predict import load_model, predict
 
 ml_models = {}
+model_ready = False
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    global model_ready
     print("Loading model...")
     ml_models["model"] = load_model()
+    model_ready = True
     print("Model loaded successfully")
     yield
     ml_models.clear()
+    model_ready = False
 
 app = FastAPI(lifespan=lifespan)
 
@@ -28,6 +32,12 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.get("/health")
+async def health_check():
+    """Always responds immediately. Railway uses this to confirm the container is alive."""
+    return {"status": "ok", "model_ready": model_ready}
+
 
 @app.post("/predict")
 async def process_image(file: UploadFile = File(...)):

@@ -3,8 +3,10 @@
 dockerfilePath = "backend/Dockerfile"
 
 [deploy]
-# Railway health check — FastAPI has a built-in root route
-healthcheckPath = "/docs"
-healthcheckTimeout = 300
+# /health responds IMMEDIATELY (even before model finishes loading)
+# This prevents Railway from timing out during the ~4-5 min YOLO model load
+healthcheckPath = "/health"
+# 10 minute timeout as an extra safety net
+healthcheckTimeout = 600
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 3
