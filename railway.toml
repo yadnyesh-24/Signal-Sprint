@@ -1,0 +1,10 @@
+[build]
+# Tell Railway to look inside the /backend subfolder for the Dockerfile
+dockerfilePath = "backend/Dockerfile"
+
+[deploy]
+# Railway health check — FastAPI has a built-in root route
+healthcheckPath = "/docs"
+healthcheckTimeout = 300
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3

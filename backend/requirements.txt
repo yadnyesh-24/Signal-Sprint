@@ -1,11 +1,14 @@
-torch==2.11.0
-torchvision==0.26.0
-opencv-python==4.13.0.92
-ultralytics==8.4.35
-Pillow==12.2.0
-numpy==2.4.4
-scikit-learn==1.8.0
+--index-url https://download.pytorch.org/whl/cpu
+torch==2.6.0+cpu
+torchvision==0.21.0+cpu
+
+--extra-index-url https://pypi.org/simple
+opencv-python-headless==4.10.0.84
+ultralytics==8.3.145
+Pillow==10.4.0
+numpy==1.26.4
+scikit-learn==1.5.2
+xgboost==2.1.1
 fastapi>=0.100.0
 uvicorn>=0.23.0
 python-multipart>=0.0.6
-xgboost
